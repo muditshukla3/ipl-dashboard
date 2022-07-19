@@ -3,7 +3,9 @@ This is a full stack app built using spring boot and react. It's also using HSQL
 
 ### Running frontend
 ```
-cd src/frontend && npm start
+cd src/frontend 
+npm install
+npm start
 ```
 Make sure to uncomment REACT_APP_API_ROOT_URL property having service url in .env file.
 
