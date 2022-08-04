@@ -1,6 +1,12 @@
 ## Introduction
 This is a full stack app built using spring boot and react. It's also using HSQL as an in-memory database to persist the data. During startup application ingest data to database from src/main/resources/match-data.csv using spring-batch.
 
+### Running Docker Image
+Use the following command to run this application as docker image.
+```
+docker run -d --name=ipl-dashboard -p 8080:8080 muditshukla3/ipl-dashboard:1-RELEASE
+```
+
 ### Running frontend
 ```
 cd src/frontend 
