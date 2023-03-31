@@ -1,0 +1,45 @@
+# Simple deployment used to deploy and manage the app in muditshukla3/ipl-dashboard:1-RELEASE
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ipl-dashboard
+  labels:
+    app: web
+spec:
+  replicas: 1
+  minReadySeconds: 5
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 0
+      maxSurge: 1
+  selector:
+    matchLabels:
+      app: web
+  template:
+    metadata:
+      labels:
+        app: web
+    spec:
+      terminationGracePeriodSeconds: 1
+      containers:
+        - name: ipl-dashboard-pod
+          image: muditshukla3/ipl-dashboard:1-RELEASE
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ipl-dashboard-nodeport
+spec:
+  type: NodePort
+  ports:
+    - port: 80
+      targetPort: 8080
+      nodePort: 31111
+      protocol: TCP
+  selector:
+    app: web
