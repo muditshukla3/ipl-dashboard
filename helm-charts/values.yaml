@@ -1,0 +1,17 @@
+replicaCount: 1
+
+image:
+  repository: muditshukla3/ipl-dashboard:1-RELEASE
+  pullPolicy: Always
+
+service:
+  type: NodePort
+  port: 80
+  name: ipl-dashboard-nodeport
+  targetPort: 8080
+  nodePort: 31111
+  protocol: TCP
+  minReadySeconds: 5
+
+containers:
+  name: ipl-dashboard-pod

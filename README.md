@@ -7,18 +7,33 @@ Use the following command to run this application as docker image.
 docker run -d --name=ipl-dashboard -p 8080:8080 muditshukla3/ipl-dashboard:1-RELEASE
 ```
 
-### Running as Kubernetes Deployment
-Use the following command to run the application as k8 deployment.
+## Running Application in Kubernetes
+
+### Using K8 Manifest
+Use the following command to run the application kubernetes using k8 manifest.
 ```
 kubectl apply -f deployment.yml
 ```
-Access the application on http://localhost:31111. 31111 is the node port exposed vi k8 service component.
-
 Run the following command to delete the deployment and service
 ```
 kubectl delete deployment ipl-dashboard
 kubectl delete services ipl-dashboard-nodeport
 ```
+### Using Helm Chart
+Make sure you have helm installed on your machine. Use the following command to deploy application using helm charts.
+
+```
+helm install web helm-charts/
+```
+
+Use the following command to uninstall
+```
+helm uninstall web
+```
+
+Access the application on http://localhost:31111. 31111 is the node port exposed vi k8 service component.
+
+
 ### Running frontend
 ```
 cd src/frontend 
