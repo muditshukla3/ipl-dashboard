@@ -1,7 +1,7 @@
 replicaCount: 1
 
 image:
-  repository: muditshukla3/ipl-dashboard:1-RELEASE
+  repository: muditshukla3/ipl-dashboard:2-RELEASE
   pullPolicy: Always
 
 service:

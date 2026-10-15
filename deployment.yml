@@ -24,7 +24,7 @@ spec:
       terminationGracePeriodSeconds: 1
       containers:
         - name: ipl-dashboard-pod
-          image: muditshukla3/ipl-dashboard:1-RELEASE
+          image: muditshukla3/ipl-dashboard:2-RELEASE
           imagePullPolicy: Always
           ports:
             - containerPort: 8080

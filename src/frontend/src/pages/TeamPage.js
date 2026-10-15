@@ -10,14 +10,14 @@ export const TeamPage = () => {
 
     const [team, setTeam] = useState({ matches: [] });
     const { teamName } = useParams();
-    const endYear = process.env.REACT_APP_DATA_END_YEAR;
+    const endYear = 2020;
     const defaultLabelStyle = {
         fontSize: '15px',
         fontFamily: 'sans-serif',
       };
     useEffect(() => {
         const fetchMatches = async () => {
-            const response = await fetch(`${process.env.REACT_APP_API_ROOT_URL}/team/${teamName}`);
+            const response = await fetch(`/team/${teamName}`);
             const data = await response.json();
             setTeam(data);
         };

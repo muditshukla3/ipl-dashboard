@@ -2,7 +2,7 @@ package com.ms.ipldashboard.processor;
 
 import java.time.LocalDate;
 
-import org.springframework.batch.item.ItemProcessor;
+import org.springframework.batch.infrastructure.item.ItemProcessor;
 
 import com.ms.ipldashboard.data.MatchInput;
 import com.ms.ipldashboard.model.Match;
