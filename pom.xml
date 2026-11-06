@@ -5,16 +5,16 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.7.1</version>
+		<version>4.1.1</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.ms</groupId>
 	<artifactId>ipl-dashboard</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.2-RELEASE</version>
 	<name>ipl-dashboard</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
-		<java.version>11</java.version>
+		<java.version>21</java.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -71,7 +71,7 @@
 			<plugin>
 				<groupId>com.github.eirslett</groupId>
 				<artifactId>frontend-maven-plugin</artifactId>
-				<version>1.6</version>
+				<version>1.15.4</version>
 				<configuration>
 				   <workingDirectory>src/frontend</workingDirectory>
 				   <installDirectory>target</installDirectory>
@@ -83,8 +83,7 @@
 						 <goal>install-node-and-npm</goal>
 					  </goals>
 					  <configuration>
-						 <nodeVersion>v16.15.0</nodeVersion>
-						 <npmVersion>8.5.5</npmVersion>
+						 <nodeVersion>v24.22.0</nodeVersion>
 					  </configuration>
 				   </execution>
 				   <execution>
@@ -93,7 +92,7 @@
 						 <goal>npm</goal>
 					  </goals>
 					  <configuration>
-						 <arguments>install</arguments>
+						 <arguments>ci</arguments>
 					  </configuration>
 				   </execution>
 				   <execution>
@@ -107,6 +106,27 @@
 				   </execution>
 				</executions>
 			 </plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>copy-frontend-build</id>
+						<phase>process-resources</phase>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>${project.build.outputDirectory}/static</outputDirectory>
+							<resources>
+								<resource>
+									<directory>src/frontend/build</directory>
+								</resource>
+							</resources>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
 		</plugins>
 	</build>
 
